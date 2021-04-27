@@ -52,9 +52,9 @@ public class studentScore {
 			r++;
 		}
 		
-		for(Student stu: stuList) {
+		for(Student stu1: stuList) {
 			
-			System.out.println(stu);
+			System.out.println(stu1);
 		}
 		
 		System.out.println("------------------------------------");
@@ -67,8 +67,12 @@ public class studentScore {
 class SumSort implements Comparator<Student>{
 @Override
 public int compare(Student stu1, Student stu2) {
+	int ret =0;
+	if(new Integer(stu1.getSum()).compareTo(stu2.getSum()) == 1 ) ret = -1;
+	if(new Integer(stu1.getSum()).compareTo(stu2.getSum()) == -1 ) ret =  1;
+	if(new Integer(stu1.getSum()).compareTo(stu2.getSum()) == 0 ) ret=  -1;
 	
-	return new Integer(stu1.getSum()).compareTo(stu2.getSum())*-1;
+	return ret;
 	}
 
 }
@@ -228,10 +232,10 @@ class Student implements Comparable<Student>{
 
 	@Override
 	public int compareTo(Student stu) {
-		
-		
 		return this.getIdNum().compareTo(stu.getIdNum());
 	}
+	
+	
 	
 	
 }
