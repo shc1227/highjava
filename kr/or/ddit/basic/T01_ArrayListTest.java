@@ -81,7 +81,8 @@ public class T01_ArrayListTest {
 		
 		// toArray() => 리스트 안의 데이터들을 배열로 변환하여 반환한다. 기본적으로 Object배열 반환함.
 		Object[] strArr = list2.toArray();
-		System.out.println("배열의 개수 : " + strArr.length);
+		System.out.println("배열의 개수"
+				+ " : " + strArr.length);
 		
 		// 리스트의 제너릭 타입에 맞는 자료형의 배열로 반환하는 방법
 		// 제너릭타입의 0개짜리 배열을 생성해서 매개변수로 넣어준다.
@@ -94,12 +95,16 @@ public class T01_ArrayListTest {
 		for(int i=0;i<strArr.length ; i++) {
 			System.out.println(strArr[i]);
 		}
-		for(int i=0;i<list2.size();i++) {
+//		for(int i=0;i<list2.size();i++) {
+//			list2.remove(i);
+//		}
+		for(int i=list2.size()-1;i>=0;i--) {
 			list2.remove(i);
 		}
 		
-		System.out.println(list2.size());//앞에서 지웠기 때문에 2개가 된다. 거꾸로 지워야한다.
 		
+//		System.out.println(list2.size());//앞에서 지웠기 때문에 2개가 된다. 거꾸로 지워야한다.
+		System.out.println(list2.size());
 		
 		
 		
