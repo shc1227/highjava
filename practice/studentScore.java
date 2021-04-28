@@ -46,11 +46,36 @@ public class studentScore {
 		
 		System.out.println("총점의 역순정렬과 총점이 같으면 학번의 내림차순 ");
 		Collections.sort(stuList,new SumSort());
-		r =1;
+		
+//		for(int i=0;i<stuList.size();i++) {
+//			r=0;
+//			for(int j=0;j<stuList.size();j++) {	
+//			if((stuList.get(i).getSum()).compareTo((stuList.get(i).getSum())) == 1) {
+//				r++;
+//			}
+//			}
+//			
+//			stuList.get(i).setRank(r);
+//			
+//		
+//		}
 		for(int i=0;i<stuList.size();i++) {
+			r=1;
+			for(int j=0;j<stuList.size();j++) {
+				if(stuList.get(i).getSum()<stuList.get(j).getSum()) {
+					r++;
+				}
+			}
 			stuList.get(i).setRank(r);
-			r++;
 		}
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		for(Student stu1: stuList) {
 			
@@ -102,80 +127,44 @@ class Student implements Comparable<Student>{
 		 
 	}
 
-
-
-
-
 	public String getIdNum() {
 		return idNum;
 	}
-
-
-
 
 
 	public void setIdNum(String idNum) {
 		this.idNum = idNum;
 	}
 
-
-
-
-
 	public String getName() {
 		return name;
 	}
-
-
-
 
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
-
-
-
-
 	public int getKor() {
 		return kor;
 	}
-
-
-
-
 
 	public void setKor(int kor) {
 		this.kor = kor;
 	}
 
 
-
-
-
 	public int getEng() {
 		return eng;
 	}
-
-
-
-
 
 	public void setEng(int eng) {
 		this.eng = eng;
 	}
 
-
-
-
-
 	public int getMath() {
 		return math;
 	}
-
-
-
 
 
 	public void setMath(int math) {
@@ -183,45 +172,21 @@ class Student implements Comparable<Student>{
 	}
 
 
-
-
-
 	public int getSum() {
 		return sum;
 	}
-
-
-
-
 
 	public void setSum(int sum) {
 		this.sum = sum;
 	}
 
-
-
-
-
 	public int getRank() {
 		return rank;
 	}
 
-
-
-
-
 	public void setRank(int rank) {
 		this.rank = rank;
 	}
-
-
-
-
-
-
-
-
-
 
 
 	@Override

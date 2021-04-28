@@ -51,7 +51,7 @@ class SortNumDesc implements Comparator<Member>{
 
 	@Override
 	public int compare(Member mem1, Member mem2) {
-		/* 이것도 가능
+//		 이것도 가능
 		if(mem1.getNum() > mem2.getNum()) {
 			return -1;
 		}else if(mem1.getNum() == mem2.getNum()) {
@@ -59,12 +59,12 @@ class SortNumDesc implements Comparator<Member>{
 		}else {
 			return 1;
 		}
-		*/
+		
 		// Wrapper 클래스에서 제공하는 메서드를 이용하는 방법1
 		// return Integer.compare(mem1.getNum(), mem2.getNum())*-1;
 		
 		// Wrapper 클래스에서 제공하는 메서드를 이용하는 방법2
-		return new Integer(mem1.getNum()).compareTo(mem2.getNum())*-1;
+//		return new Integer(mem1.getNum()).compareTo(mem2.getNum())*-1;
 	}
 	
 }

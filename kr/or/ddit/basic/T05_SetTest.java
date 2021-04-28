@@ -102,9 +102,9 @@ public class T05_SetTest {
 		System.out.println("List의 자료 출력...");
 		
 		for(int i=0; i<intRndList.size(); i++) {
-			System.out.println(intRndList.get(i));
+			System.out.print(intRndList.get(i)+" ");
 		}
-	
+		System.out.println();
 		for(Integer num : intRndList) {
 			System.out.print(num + " ");
 		}
