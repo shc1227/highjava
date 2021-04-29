@@ -104,14 +104,14 @@ public class T10_PhoneBookTest {
 			switch(menuNum){
 				case 1 : insert();		// 등록
 					break;
-//				case 2 : update();		// 수정
-//					break;
-//				case 3 : delete();		// 삭제
-//					break;
-//				case 4 : search();		// 검색
-//					break;
-//				case 5 : displayAll();	// 전체 출력
-//					break;
+				case 2 : update();		// 수정
+					break;
+				case 3 : delete();		// 삭제
+					break;
+				case 4 : search();		// 검색
+					break;
+				case 5 : displayAll();	// 전체 출력
+					break;
 				case 0 :
 					System.out.println("프로그램을 종료합니다...");
 					return;
@@ -119,6 +119,104 @@ public class T10_PhoneBookTest {
 					System.out.println("잘못 입력했습니다. 다시입력하세요.");
 			} // switch문
 		} // while문
+	}
+	
+	
+	/**
+	 * 전체 자료를 출력하는 메서드
+	 */
+	
+	private void displayAll() {
+		Set<String> keySet = phoneBookMap.keySet();
+		System.out.println("=======================================================");
+		System.out.println(" 번호\t이름\t전화번호\t주소");
+		System.out.println("=======================================================");
+		
+		if(keySet.size() == 0) {
+			System.out.println("등록된 전화번호 정보가 하나도 없습니다.");
+		}else {
+			Iterator<String> it = keySet.iterator();
+			int cnt = 0;
+			while(it.hasNext()) {
+				cnt++;
+				String name = it.next(); //키값
+				Phone p = phoneBookMap.get(name); // value
+				System.out.println(" "+cnt+"\t" + p.getName()+"\t"+p.getTel()+"\t"+p.getAddr());
+			}
+		}
+		
+	}
+
+	/**
+	 * 이름을 이용한 전화번호 정보를 검색하는 메서드
+	 */
+	private void search() {
+		System.out.println();
+		System.out.println("검색 할 전화번호 정보를 입력하세요");
+		System.out.println("이름 >>");
+		String name = scan.next();
+		
+		Phone p = phoneBookMap.get(name);
+		if(p == null) {
+			System.out.println(name+"씨의 전화번호 정보가 없습니다.");
+		}else {
+			System.out.println(name+"씨의 전화번호 정보");
+			System.out.println("이름 : "+p.getName());
+			System.out.println("전화 : "+p.getTel());
+			System.out.println("주소 : "+p.getAddr());
+		}
+		
+		System.out.println("검색 작업 완료.");
+	}
+
+	/**
+	 * 전화번호 정보를 삭제하는 메서드
+	 */
+	
+	private void delete() {
+		System.out.println();
+		System.out.println("삭제 할 전화번호 정보를 입력하세요");
+		System.out.println("이름 >>");
+		String name = scan.next();
+		
+		// remove(key) => 삭제 성공하면 삭제된 value값을 반환하고 실패하면 null을 반환한다.
+		if(phoneBookMap.remove(name) == null ) {
+			System.out.println(name + "씨는 등록된 사람이 아닙니다.");
+		}else {
+			System.out.println(name+"씨 정보를 삭제했습니다.");
+		}
+		
+	}
+
+	/**
+	 * 전화번호 정보를 수정하는 메서드
+	 */
+	
+	private void update() {
+		System.out.println();
+		System.out.println("수정할 전화번호 정보를 입력하세요");
+		System.out.println("이름 >>");
+		String name = scan.next();
+		
+		// 이미 등록된 사람인지 검사
+		// get()메서드로 값을 가져올 때 가져올 자료가 없으면 null을 반환한다.
+		
+		if(phoneBookMap.get(name) == null) {
+			System.out.println(name + "씨는 전화정보가 없습니다.");
+			return; // 메서드 종료
+		}
+		System.out.println("전화번호 >>");
+		String tel = scan.next();
+		
+		System.out.println("주소>>");
+		scan.nextLine(); // 입력버퍼에 남아 있는 엔터키 값을 읽어오는 역할을 수행함.
+					// next() 호출 후 혹시 남아있을지도 모를 쓰레기값 제거용.
+		String addr = scan.nextLine();
+
+		Phone p = new Phone(name, tel, addr);
+		
+		phoneBookMap.put(name, p); // 같은 key값에 데이터를 저장하면 value값이 변경된다.
+		System.out.println(name + "씨 정보 수정완료.");
 	}
 
 	/**
